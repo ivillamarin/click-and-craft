@@ -8,7 +8,7 @@ import TechTicker from './sections/TechTicker';
 import Philosophy from './sections/Philosophy';
 import Values from './sections/Values';
 import Footer from './sections/Footer';
-import logoImg from './assets/logo.png';
+
 import Pricing from './sections/Pricing';
 import Contact from './sections/Contact';
 import NoiseOverlay from './components/NoiseOverlay';
@@ -39,7 +39,7 @@ function App() {
 
       {/* Capa 2: Navbar */}
       <CardNav 
-        logo={logoImg}
+        logo="/logo-3d.png"
         logoAlt="Click & Craft Logo"
         items={navItems}
         baseColor="rgba(255, 255, 255, 0.05)"

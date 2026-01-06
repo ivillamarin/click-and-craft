@@ -163,7 +163,7 @@ const CardNav = ({
           </div>
 
           <div className="logo-container flex items-center md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 order-1 md:order-none">
-            <img src={logo} alt={logoAlt} className="logo h-10 w-auto object-contain bg-transparent mix-blend-screen" />
+            <img src={logo} alt={logoAlt} className="logo h-10 w-auto object-contain bg-transparent" />
             <span className="hidden lg:block ml-3 text-xs text-white/50 tracking-widest font-medium uppercase border-l border-white/10 pl-3">
               Diseñamos lo que soñás
             </span>
