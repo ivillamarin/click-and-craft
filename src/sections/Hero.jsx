@@ -20,7 +20,7 @@ const Hero = () => {
         </div>
 
         {/* Título Principal */}
-        <div className="font-title text-7xl md:text-9xl tracking-tight leading-none text-white w-[80%] ml-auto text-center">
+        <div className="font-title text-7xl md:text-9xl tracking-tight leading-none text-white w-full md:w-[80%] md:ml-auto text-center">
           <BlurText 
             text="Tu idea merece mostrarse al mundo." 
             className="text-center font-title"
@@ -51,7 +51,7 @@ const Hero = () => {
       </div>
 
       {/* 3. DETALLES FINALES - Scroll Hint */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer opacity-70 hover:opacity-100 transition-opacity">
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer opacity-70 hover:opacity-100 transition-opacity">
         <ChevronDown className="w-8 h-8 text-white" />
       </div>
 
