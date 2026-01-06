@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Instagram } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -22,6 +23,18 @@ const Footer = () => {
         >
           clickandcraft.st@gmail.com
         </a>
+
+        <div className="flex justify-center gap-6 mb-12">
+          <a 
+            href="https://www.instagram.com/clickandcraft.st/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-white hover:text-primary transition-colors duration-300 p-2 border border-white/10 rounded-full hover:border-primary/50 hover:bg-white/5"
+            aria-label="Instagram"
+          >
+            <Instagram size={32} />
+          </a>
+        </div>
         
           <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-txtSec text-sm">
             <p>© {new Date().getFullYear()} Click & Craft. Todos los derechos reservados.</p>
