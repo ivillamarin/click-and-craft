@@ -7,7 +7,7 @@ const FloatingElements = () => {
       
       {/* Elemento 1 (Arriba Izquierda) - Top 15% */}
       <motion.div
-        className="absolute top-[15%] left-[5%] z-10 w-40 md:w-64 group relative pointer-events-auto"
+        className="absolute top-[15%] left-[5%] z-10 w-40 md:w-64 group pointer-events-auto"
         initial={{ opacity: 0, x: -100, rotate: -20 }}
         whileInView={{ opacity: 1, x: 0, rotate: 0 }}
         viewport={{ once: false, margin: "-50px" }}
@@ -27,7 +27,7 @@ const FloatingElements = () => {
 
       {/* Elemento 2 (Medio Derecha) - Top 45% */}
       <motion.div
-        className="absolute top-[45%] right-[5%] z-10 w-40 md:w-64 group relative pointer-events-auto"
+        className="absolute top-[45%] right-[5%] z-10 w-40 md:w-64 group pointer-events-auto"
         initial={{ opacity: 0, x: 100, rotate: 20 }}
         whileInView={{ opacity: 1, x: 0, rotate: 0 }}
         viewport={{ once: false }}
@@ -47,7 +47,7 @@ const FloatingElements = () => {
 
       {/* Elemento 3 (Abajo Izquierda) - Top 75% */}
       <motion.div
-        className="absolute top-[75%] left-[5%] z-10 w-40 md:w-64 group relative pointer-events-auto"
+        className="absolute top-[75%] left-[5%] z-10 w-40 md:w-64 group pointer-events-auto"
         initial={{ opacity: 0, x: -100, y: 50 }}
         whileInView={{ opacity: 1, x: 0, y: 0 }}
         viewport={{ once: false }}

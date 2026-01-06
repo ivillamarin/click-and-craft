@@ -177,7 +177,7 @@ const Contact = () => {
           <div className="flex flex-col gap-4">
             <h4 className="text-white font-semibold mb-2 uppercase tracking-wider text-xs">Social</h4>
             <div className="flex gap-6">
-              <a href="#" className="hover:text-violet-400 transition-colors group">
+              <a href="https://www.instagram.com/clickandcraft.st/" target="_blank" rel="noopener noreferrer" className="hover:text-violet-400 transition-colors group">
                 <Instagram size={24} className="group-hover:scale-110 transition-transform" />
               </a>
               <a href="#" className="hover:text-violet-400 transition-colors group">
