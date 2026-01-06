@@ -7,7 +7,7 @@ const FloatingElements = () => {
       
       {/* Elemento 1 (Arriba Izquierda) - Top 15% */}
       <motion.div
-        className="absolute top-[15%] left-[5%] z-10 w-40 md:w-64"
+        className="absolute top-[15%] left-[5%] z-10 w-40 md:w-64 group relative pointer-events-auto"
         initial={{ opacity: 0, x: -100, rotate: -20 }}
         whileInView={{ opacity: 1, x: 0, rotate: 0 }}
         viewport={{ once: false, margin: "-50px" }}
@@ -20,11 +20,14 @@ const FloatingElements = () => {
           animate={{ y: [0, -20, 0] }}
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
         />
+        <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-500 text-[10px] tracking-widest uppercase text-white/60 font-light pointer-events-none whitespace-nowrap">
+          By Paz Caballeri
+        </span>
       </motion.div>
 
       {/* Elemento 2 (Medio Derecha) - Top 45% */}
       <motion.div
-        className="absolute top-[45%] right-[5%] z-10 w-40 md:w-64"
+        className="absolute top-[45%] right-[5%] z-10 w-40 md:w-64 group relative pointer-events-auto"
         initial={{ opacity: 0, x: 100, rotate: 20 }}
         whileInView={{ opacity: 1, x: 0, rotate: 0 }}
         viewport={{ once: false }}
@@ -37,11 +40,14 @@ const FloatingElements = () => {
           animate={{ y: [0, -20, 0] }}
           transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
         />
+        <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-500 text-[10px] tracking-widest uppercase text-white/60 font-light pointer-events-none whitespace-nowrap">
+          By Paz Caballeri
+        </span>
       </motion.div>
 
       {/* Elemento 3 (Abajo Izquierda) - Top 75% */}
       <motion.div
-        className="absolute top-[75%] left-[5%] z-10 w-40 md:w-64"
+        className="absolute top-[75%] left-[5%] z-10 w-40 md:w-64 group relative pointer-events-auto"
         initial={{ opacity: 0, x: -100, y: 50 }}
         whileInView={{ opacity: 1, x: 0, y: 0 }}
         viewport={{ once: false }}
@@ -54,6 +60,9 @@ const FloatingElements = () => {
           animate={{ y: [0, -20, 0] }}
           transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
         />
+        <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-500 text-[10px] tracking-widest uppercase text-white/60 font-light pointer-events-none whitespace-nowrap">
+          By Paz Caballeri
+        </span>
       </motion.div>
 
     </div>
