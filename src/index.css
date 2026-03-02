@@ -38,3 +38,26 @@ h5,
 h6 {
   font-family: 'nexa-heavy', sans-serif;
 }
+@font-face {
+  font-family: 'Satoshi-Bold';
+  src: url('/fuentes/Satoshi-Bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ClashDisplay-Regular';
+  src: url('/fuentes/ClashDisplay-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ClashDisplay-Light';
+  src: url('/fuentes/ClashDisplay-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}

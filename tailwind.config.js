@@ -17,11 +17,11 @@ export default {
                 'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
             },
             fontFamily: {
-                sans: ['CreatoDisplay-MediumItalic', 'sans-serif'],
-                display: ['CreatoDisplay-MediumItalic', 'sans-serif'],
-                major: ['nexa-heavy', 'sans-serif'], // Replacing Major Mono with Nexa for titles as requested
-                title: ['nexa-heavy', 'sans-serif'],
-                text: ['CreatoDisplay-MediumItalic', 'sans-serif'],
+                sans: ['ClashDisplay-Regular', 'sans-serif'],
+                display: ['Satoshi-Bold', 'sans-serif'],
+                major: ['Satoshi-Bold', 'sans-serif'],
+                title: ['Satoshi-Bold', 'sans-serif'],
+                text: ['ClashDisplay-Light', 'sans-serif'],
             },
             animation: {
                 'marquee': 'marquee 25s linear infinite',

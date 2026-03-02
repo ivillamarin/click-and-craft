@@ -1,5 +1,5 @@
 import React from 'react';
-import DarkVeil from './components/reactbits/DarkVeil';
+import Particles from './components/reactbits/Particles';
 import CardNav from './components/reactbits/CardNav';
 import Hero from './sections/Hero';
 import Services from './sections/Services';
@@ -8,12 +8,12 @@ import TechTicker from './sections/TechTicker';
 import Philosophy from './sections/Philosophy';
 import Values from './sections/Values';
 import Footer from './sections/Footer';
-
 import Pricing from './sections/Pricing';
 import Contact from './sections/Contact';
 import NoiseOverlay from './components/NoiseOverlay';
 import FloatingElements from './components/FloatingElements';
 import Workflow from './sections/Workflow';
+import SmoothScroll from './components/SmoothScroll';
 
 function App() {
   const navItems = [
@@ -26,12 +26,25 @@ function App() {
   ];
 
   return (
-    <>
-      
-        <NoiseOverlay />
+    <SmoothScroll>
+      <NoiseOverlay />
       {/* Capa 0: Fondo */}
       <div className="fixed inset-0 z-0 pointer-events-none">
-        <DarkVeil />
+        <Particles
+          particleCount={180}
+          particleSpread={12}
+          speed={0.6}
+          particleColors={['#c700b6', '#e040d0', '#8a007e', '#ff44ee', '#ffffff']}
+          alphaParticles={true}
+          particleBaseSize={120}
+          sizeRandomness={1.2}
+          cameraDistance={22}
+          moveParticlesOnHover={true}
+          particleHoverFactor={0.4}
+          disableRotation={false}
+          pixelRatio={Math.min(window.devicePixelRatio, 2)}
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}
+        />
       </div>
 
       {/* Capa 1: Fade Superior (Reemplazo de Niebla) */}
@@ -65,7 +78,7 @@ function App() {
           <Contact />
         </div>
       </main>
-    </>
+    </SmoothScroll>
   );
 }
 

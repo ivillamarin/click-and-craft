@@ -1,133 +1,164 @@
 import React, { useState } from 'react';
-import CardSwap from '../components/reactbits/CardSwap';
-import BlurText from '../components/reactbits/BlurText';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import FadeUp from '../components/FadeUp';
+import RevealLine from '../components/RevealLine';
 import ProjectModal from '../components/ProjectModal';
 
-const Projects = () => {
-  const [selectedProject, setSelectedProject] = useState(null);
+const projectsData = [
+  {
+    id: 1,
+    title: 'Aura Dining',
+    description: 'Fine Dining Experience',
+    category: 'Restaurante · Reservas',
+    details: 'Sitio web para restaurante de alta cocina que despierta los sentidos. Incluye menú interactivo, sistema de reservas.',
+    image: '/projects/restaurant.png',
+    tags: ['React', 'Tailwind', 'Framer Motion'],
+    year: '2025',
+  },
+  {
+    id: 2,
+    title: 'Art Gallery X',
+    category: 'Galería · Inmersivo',
+    description: 'Immersive Web',
+    details: 'Una galería de arte virtual que redefine la exhibición online. Experiencias 3D.',
+    image: '/projects/gallery.png',
+    tags: ['Three.js', 'React'],
+    year: '2025',
+  },
+  {
+    id: 3,
+    title: 'Cyber Shop',
+    category: 'E-Commerce · Plataforma',
+    description: 'E-Commerce Platform',
+    details: 'Solución de comercio electrónico robusta y escalable. Optimizada para conversión.',
+    image: '/projects/ecommerce.png',
+    tags: ['Next.js', 'Supabase'],
+    year: '2025',
+  },
+  {
+    id: 4,
+    title: 'Tech Studio',
+    category: 'Agencia · Portfolio',
+    description: 'Agency Portfolio',
+    details: 'Portafolio corporativo minimalista y elegante. Enfocado en la presentación de casos de estudio.',
+    image: '/projects/agency.png',
+    tags: ['React', 'Framer'],
+    year: '2026',
+  },
+];
 
-  const projectsData = [
-    {
-      id: 1,
-      title: "Aura Dining",
-      description: "Fine Dining Experience",
-      details: "Sitio web para restaurante de alta cocina que despierta los sentidos. Incluye menú interactivo, sistema de reservas en tiempo real y una galería visual inmersiva que refleja la sofisticación gastronómica.",
-      image: "/projects/restaurant.png",
-      tags: ["React", "Tailwind", "Framer Motion"]
-    },
-    {
-      id: 2,
-      title: "Art Gallery X",
-      description: "Immersive Web",
-      details: "Una galería de arte virtual que redefine la exhibición online. Experiencias inmersivas 3D que permiten a los usuarios explorar colecciones de arte desde cualquier lugar del mundo con una fidelidad visual asombrosa.",
-      image: "/projects/gallery.png",
-      tags: ["Three.js", "framer motion", "tailwind", "React"]
-    },
-    {
-      id: 3,
-      title: "Cyber Shop",
-      description: "E-Commerce Platform",
-      details: "Solución de comercio electrónico robusta y escalable. Optimizada para conversión con flujos de pago simplificados y un sistema de gestión de inventario avanzado.",
-      image: "/projects/ecommerce.png",
-      tags: ["Next.js", "React", "Node.js", "tailwind"]
-    },
-    {
-      id: 4,
-      title: "Tech Studio",
-      description: "Agency Portfolio",
-      details: "Portafolio corporativo minimalista y elegante. Enfocado en la presentación de casos de estudio y servicios con una estética limpia y profesional.",
-      image: "/projects/agency.png",
-      tags: ["React", "Framer Motion", "Vite"]
-    }
-  ];
+export default function Projects() {
+  const [selected, setSelected] = useState(null);
 
   return (
     <>
-    <motion.section 
-      id="proyectos" 
-      className="min-h-screen py-32 md:py-96 px-8 md:px-24 flex flex-col lg:flex-row items-center justify-center lg:justify-start relative z-10 overflow-hidden"
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1.5, ease: "easeOut" }}
-      viewport={{ once: true, amount: 0.2 }}
-    >
-      
-      {/* Columna Izquierda (Texto) */}
-      <div className="w-full lg:w-[50%] flex flex-col justify-center items-start text-left mb-16 lg:mb-0 lg:pr-24 z-20">
-        <h2 className="font-display text-5xl md:text-8xl font-bold text-txtMain mb-8 leading-tight">
-          Selected<br />
-          <span className="text-primary">Works</span>
-        </h2>
-        
-        <p className="font-sans text-txtSec text-lg md:text-2xl leading-relaxed max-w-xl">
-          Explora nuestra colección de proyectos digitales. Desde aplicaciones fintech de alta seguridad hasta experiencias inmersivas que desafían los límites de la web.
-        </p>
+      <section id="proyectos" className="relative w-full py-32 z-10 overflow-hidden">
+        {/* Glow ambient */}
+        <div className="pointer-events-none absolute top-[20%] right-[-10%] w-[600px] h-[600px] rounded-full bg-pink-600/10 blur-[150px]" />
 
-        <div className="mt-12">
-            <div className="px-10 py-4 border border-white/20 rounded-full text-white/80 text-lg bg-white/5 backdrop-blur-sm cursor-default">
-                👆 Hacé click en los proyectos para ver detalles
-            </div>
-        </div>
-      </div>
-
-      {/* MOBILE/TABLET VIEW (Stacked Cards) */}
-      <div className="w-full lg:hidden flex flex-col gap-8 mt-12 relative z-20">
-          {projectsData.map((project) => (
-              <motion.div 
-                  key={project.id}
-                  onClick={() => setSelectedProject(project)}
-                  className="w-full aspect-video relative rounded-2xl overflow-hidden border border-white/10 shadow-lg cursor-pointer group"
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5 }}
+        <div className="max-w-7xl mx-auto px-6 md:px-16">
+          
+          {/* HEADER CENTRADO GIGANTE */}
+          <div className="flex flex-col items-center text-center mb-32">
+            <FadeUp>
+              <div className="flex justify-center mb-6">
+                <RevealLine width="3rem" delay={0.2} />
+              </div>
+              <span className="font-mono text-[10px] tracking-[0.35em] uppercase text-white/30 block mb-6">
+                Portfolio
+              </span>
+              <h2
+                className="font-title font-bold text-white leading-[0.9] tracking-tighter"
+                style={{ fontSize: 'clamp(4rem, 10vw, 9rem)' }}
               >
-                  <img 
-                      src={project.image} 
-                      alt={project.title} 
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-end p-6">
-                      <h3 className="text-2xl font-bold text-white mb-1">{project.title}</h3>
-                      <p className="text-sm text-gray-300">{project.description}</p>
-                  </div>
-              </motion.div>
-          ))}
-      </div>
-
-      {/* Columna Derecha (CardSwap Showcase) - Posicionada al borde derecho y más ancha */}
-      <div className="hidden lg:flex absolute right-[-5%] top-1/2 -translate-y-1/2 items-center justify-center h-[1200px] w-auto z-10 opacity-80 hover:opacity-100 transition-opacity duration-500">
-        <CardSwap width={1000} height={600} cardDistance={60} verticalDistance={60}>
-            {projectsData.map((project, index) => (
-                <div 
-                    key={project.id}
-                    onClick={() => setSelectedProject(project)}
-                    className="absolute top-1/2 left-1/2 w-full h-full rounded-3xl overflow-hidden border border-white/10 cursor-pointer shadow-glass group"
+                Selected <br className="lg:hidden" />
+                <span
+                  style={{
+                    background: 'linear-gradient(95deg,#fff 30%,rgba(255,255,255,0.2))',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                    fontStyle: 'italic',
+                  }}
                 >
-                    <img 
-                        src={project.image} 
-                        alt={project.title} 
-                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-12">
-                        <h3 className="text-5xl font-display font-bold text-white mb-3">{project.title}</h3>
-                        <p className="text-xl text-gray-300 font-sans">{project.description}</p>
-                    </div>
-                </div>
-            ))}
-        </CardSwap>
-      </div>
-    </motion.section>
+                  Works.
+                </span>
+              </h2>
+            </FadeUp>
+            <FadeUp delay={0.3} y={20}>
+              <p className="font-sans text-white/40 text-sm md:text-base leading-relaxed max-w-lg mx-auto mt-8">
+                Diseñamos experiencias inmersivas que trascienden la pantalla. Combinando estética de vanguardia y tecnología de precisión.
+              </p>
+            </FadeUp>
+          </div>
 
-    {selectedProject && (
-        <ProjectModal 
-            project={selectedProject} 
-            onClose={() => setSelectedProject(null)} 
-        />
-    )}
+
+          {/* STAGGERED ALTERNATING GRID (Editorial layout for smaller cases) */}
+          <div className="flex flex-col gap-24 lg:gap-40">
+            {projectsData.map((p, i) => {
+              // Create alternating layout
+              const isEven = i % 2 === 0;
+              return (
+                <div key={p.id} className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-10 lg:gap-20 items-center`}>
+                  
+                  {/* Image side */}
+                  <div className="w-full lg:w-3/5">
+                    <FadeUp duration={1.4} y={100}>
+                      <div 
+                        className="relative aspect-[4/3] w-full rounded-2xl overflow-hidden group cursor-pointer border border-white/10"
+                        onClick={() => setSelected(p)}
+                      >
+                        <img 
+                          src={p.image} 
+                          alt={p.title} 
+                          className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-105" 
+                        />
+                        <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
+                        
+                        {/* Explore CTA centered on hover */}
+                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                          <span className="bg-black/50 backdrop-blur-md text-white font-mono text-[10px] uppercase tracking-widest px-6 py-3 rounded-full border border-white/20">
+                            Explorar Proyecto
+                          </span>
+                        </div>
+                      </div>
+                    </FadeUp>
+                  </div>
+
+                  {/* Text side */}
+                  <div className={`w-full lg:w-2/5 flex flex-col ${isEven ? 'lg:items-start lg:text-left' : 'lg:items-end lg:text-right'} items-start text-left`}>
+                    <FadeUp duration={1.2} delay={0.2} y={60}>
+                      <span className="font-mono text-xs text-white/30 tracking-widest block mb-6">
+                        {String(i + 1).padStart(2, '0')} / {p.year}
+                      </span>
+                      <h3 className="font-title font-bold text-white text-4xl lg:text-5xl tracking-tight leading-tight mb-6">
+                        {p.title}
+                      </h3>
+                      <p className="font-sans text-white/50 text-base leading-relaxed mb-8 max-w-sm">
+                        {p.details}
+                      </p>
+                      
+                      <div className={`flex flex-wrap gap-2 ${isEven ? 'justify-start' : 'lg:justify-end justify-start'}`}>
+                        {p.tags.map(tag => (
+                          <span key={tag} className="font-mono text-[10px] tracking-widest uppercase text-white/40 px-3 py-1 rounded-full border border-white/10">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </FadeUp>
+                  </div>
+
+                </div>
+              );
+            })}
+          </div>
+
+        </div>
+      </section>
+
+      {selected && (
+        <ProjectModal project={selected} onClose={() => setSelected(null)} />
+      )}
     </>
   );
-};
-
-export default Projects;
+}

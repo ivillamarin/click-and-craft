@@ -1,162 +1,142 @@
 import React from 'react';
-import { Check, Sprout, Rocket, Diamond } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Check } from 'lucide-react';
+import FadeUp from '../components/FadeUp';
+import RevealLine from '../components/RevealLine';
 
-const Pricing = () => {
-  const plans = [
-    {
-      name: "Despegue",
-      icon: <Sprout size={32} className="text-violet-400" />,
-      price: "Accesible",
-      priceDetail: "Pensado como \"primer paso digital\"",
-      description: "Para quienes necesitan su primera presencia online.",
-      features: [
-        "1 página web institucional (ej. \"Quién soy + servicios + contacto\")",
-        "Diseño adaptable a móviles (responsive)",
-        "Integración con WhatsApp / formulario de contacto",
-        "Entrega rápida (5-7 días hábiles)"
-      ],
-      recommended: false
-    },
-    {
-      name: "Crecimiento",
-      icon: <Rocket size={32} className="text-white" />,
-      price: "Intermedio",
-      priceDetail: "Balance entre personalización y valor",
-      description: "Ideal para emprendedores que ya ofrecen productos o servicios.",
-      features: [
-        "Hasta 5 secciones (Inicio, Sobre mí, Servicios/Productos, Blog/Portfolio, Contacto)",
-        "Integración con redes sociales",
-        "Optimización inicial SEO (aparecer en Google con palabras clave básicas)",
-        "Google Maps (si tienen local físico)",
-        "Capacitación básica para que puedan editar contenido ellos mismos"
-      ],
-      recommended: true
-    },
-    {
-      name: "Pro",
-      icon: <Diamond size={32} className="text-violet-200" />,
-      price: "Premium",
-      priceDetail: "Mucho más económico que una agencia tradicional",
-      description: "Para quienes quieren vender online y dar un salto más grande.",
-      features: [
-        "Todo lo del paquete Crecimiento +",
-        "Tienda online (hasta 20 productos iniciales)",
-        "Carrito de compras + medios de pago integrados",
-        "Chat en vivo (Messenger, WhatsApp, o plugin básico)",
-        "Paquete de mantenimiento por 1 mes incluido"
-      ],
-      recommended: false
-    }
-  ];
+const plans = [
+  {
+    num: '01',
+    name: 'Despegue',
+    price: 'Accesible',
+    tagline: 'Presencia',
+    features: ['1 Landing page', 'Responsive web', 'WhatsApp', 'Entrega 7 días'],
+    recommended: false,
+  },
+  {
+    num: '02',
+    name: 'Crecimiento',
+    price: 'Intermedio',
+    tagline: 'Profesional',
+    features: ['5 Secciones', 'SEO Inicial', 'Integración Social', 'Panel autogestionable'],
+    recommended: true,
+  },
+  {
+    num: '03',
+    name: 'Pro',
+    price: 'Premium',
+    tagline: 'E-Commerce',
+    features: ['Tienda Online', 'Carrito de compras', 'Medios de pago', 'Soporte 1 mes'],
+    recommended: false,
+  },
+];
 
+export default function Pricing() {
   return (
-    <section className="py-24 relative overflow-hidden" id="pricing">
-      {/* Background Elements */}
-      <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-20">
-        <div className="absolute top-[20%] right-[10%] w-72 h-72 bg-violet-500/30 rounded-full blur-[100px]" />
-        <div className="absolute bottom-[20%] left-[10%] w-96 h-96 bg-blue-500/10 rounded-full blur-[120px]" />
-      </div>
+    <section className="relative py-32 overflow-hidden z-10 bg-[#020005]" id="pricing">
+      <div className="pointer-events-none absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-violet-600/10 blur-[150px]" />
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-20">
-           <motion.div
-             initial={{ opacity: 0, y: 20 }}
-             whileInView={{ opacity: 1, y: 0 }}
-             viewport={{ once: true }}
-             transition={{ duration: 0.6 }}
-           >
-              <h2 className="text-5xl md:text-7xl font-bold font-['Space_Grotesk'] tracking-tighter mb-6">
-                <span className="bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/40">
-                  Potencia Tu Marca
+      <div className="max-w-7xl mx-auto px-6 md:px-16">
+        
+        {/* LAYOUT LATERAL: Header a la izquierda, planes a la derecha */}
+        <div className="flex flex-col xl:flex-row gap-16 xl:gap-24 relative">
+          
+          {/* HEADER (Sticky effect side) */}
+          <div className="xl:w-1/3 flex flex-col justify-center xl:sticky xl:top-32 h-fit mb-12 xl:mb-0">
+            <FadeUp duration={1.2}>
+              <div className="flex items-center gap-4 mb-6">
+                <RevealLine width="2.5rem" delay={0.2} />
+                <span className="font-mono text-[10px] tracking-[0.35em] uppercase text-white/30">
+                  Inversión
+                </span>
+              </div>
+              <h2
+                className="font-title font-bold text-white leading-[0.9] tracking-tight mb-8"
+                style={{ fontSize: 'clamp(3rem, 5vw, 4.5rem)' }}
+              >
+                El valor <br />
+                <span className="text-white/40 italic font-light">
+                  de escalar.
                 </span>
               </h2>
-              <div className="flex justify-center mb-4">
-                  <div className="h-1 w-24 bg-gradient-to-r from-transparent via-violet-500 to-transparent rounded-full" />
-              </div>
-              <p className="text-xl text-gray-400 font-light max-w-2xl mx-auto">
-                Selecciona el nivel de impacto que tu negocio necesita hoy.
+              <p className="font-sans text-white/40 text-base leading-relaxed mb-10 max-w-sm">
+                Diseñamos soluciones a medida, adaptadas al estadio de tu negocio. Precios transparentes y sin contratos ocultos.
               </p>
-           </motion.div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start max-w-7xl mx-auto">
-          {plans.map((plan, index) => (
-            <motion.div
-              key={plan.name}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
-              whileHover={{ y: -10, transition: { duration: 0.3 } }}
-              className={`
-                relative p-8 rounded-2xl backdrop-blur-md border transition-all duration-300 group
-                flex flex-col h-full
-                ${
-                  plan.recommended
-                    ? 'bg-white/10 border-violet-500/80 shadow-[0_0_30px_-5px_rgba(139,92,246,0.3)] z-10'
-                    : 'bg-white/5 border-white/10 hover:border-white/20'
-                }
-              `}
-            >
-              {plan.recommended && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-violet-600 text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider shadow-lg">
-                  Recomendado
-                </div>
-              )}
-
-              <div className="mb-6">
-                <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 backdrop-blur-sm border ${
-                  plan.recommended 
-                    ? 'bg-violet-500/20 border-violet-400/30' 
-                    : 'bg-white/5 border-white/10 group-hover:bg-white/10'
-                }`}>
-                  {plan.icon}
-                </div>
-                <h3 className={`text-xl font-bold mb-2 tracking-wider ${plan.recommended ? 'text-violet-200' : 'text-white'}`}>
-                  {plan.name}
-                </h3>
-                <p className="text-gray-300 text-sm mb-4 leading-relaxed">
-                  {plan.description}
-                </p>
-                <div className="text-3xl font-bold text-white mb-1">{plan.price}</div>
-                <p className="text-white/50 text-xs font-medium tracking-wide">
-                  {plan.priceDetail}
-                </p>
+              
+              <div className="border border-white/10 rounded-2xl p-6 bg-white/[0.02] backdrop-blur-sm max-w-sm">
+                <p className="font-mono text-[10px] uppercase tracking-widest text-violet-400 mb-2">Benefit.</p>
+                <p className="font-sans text-sm text-white/70">Diseños 100% customizados, no usamos plantillas genéricas.</p>
               </div>
+            </FadeUp>
+          </div>
 
-              <div className="w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent mb-8" />
+          {/* PRICING CARDS */}
+          <div className="xl:w-2/3">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {plans.map((plan, i) => (
+                <FadeUp key={plan.name} delay={i * 0.15} duration={1.2} y={80}>
+                  <div
+                    className={`relative flex flex-col h-full rounded-2xl p-8 border transition-colors duration-500 overflow-hidden group ${
+                      plan.recommended 
+                        ? 'bg-white/[0.04] border-violet-500/50 hover:bg-white/[0.06] hover:border-violet-400' 
+                        : 'bg-[#06040A] border-white/5 hover:border-white/15'
+                    }`}
+                  >
+                    {/* Hover Glow */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-violet-500/0 via-violet-500/0 to-violet-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
-              <ul className="space-y-4 mb-10 flex-grow">
-                {plan.features.map((feature, i) => (
-                  <li key={i} className="flex items-start gap-3 text-gray-300 group-hover:text-white transition-colors duration-200">
-                    <div className={`mt-0.5 p-0.5 rounded-full ${plan.recommended ? 'bg-violet-500/20' : 'bg-white/10'}`}>
-                       <Check size={14} className={plan.recommended ? "text-violet-400" : "text-white"} />
+                    {/* Recommended Tag */}
+                    {plan.recommended && (
+                      <div className="absolute top-0 right-8 px-3 py-1 bg-violet-500/20 border-x border-b border-violet-500/30 rounded-b-lg">
+                        <span className="font-mono text-[8px] uppercase tracking-widest text-violet-300">Popular</span>
+                      </div>
+                    )}
+
+                    <div className="mb-8">
+                      <span className="font-mono text-[10px] text-white/20 tracking-widest block mb-4">{plan.num}</span>
+                      <h3 className="font-title text-3xl font-bold text-white mb-1">{plan.name}</h3>
+                      <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/30">{plan.tagline}</p>
                     </div>
-                    <span className="text-sm leading-relaxed">{feature}</span>
-                  </li>
-                ))}
-              </ul>
 
-              <a
-                href="#contact"
-                className={`
-                  block w-full py-4 rounded-xl font-semibold tracking-wide transition-all duration-300 text-center
-                  ${
-                    plan.recommended
-                      ? 'bg-violet-600 hover:bg-violet-700 text-white shadow-lg shadow-violet-900/20'
-                      : 'bg-white/5 hover:bg-white/10 text-white border border-white/10 hover:border-white/20'
-                  }
-                `}
-              >
-                Solicitar Pack
-              </a>
-            </motion.div>
-          ))}
+                    <div className="mb-10 block pb-8 border-b border-white/10">
+                      <span className="text-3xl font-title font-light text-white">{plan.price}</span>
+                    </div>
+
+                    <ul className="space-y-4 mb-10 flex-grow">
+                      {plan.features.map((f, fi) => (
+                        <li key={fi} className="flex items-start gap-3">
+                          <Check size={14} className={plan.recommended ? 'text-violet-400' : 'text-white/40'} />
+                          <span className="font-sans text-sm text-white/60">{f}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <a
+                      href="#contact"
+                      className={`block w-full text-center py-4 rounded-xl font-mono text-[10px] tracking-widest uppercase transition-all duration-300 border ${
+                        plan.recommended
+                          ? 'bg-violet-600/20 border-violet-500/50 text-white hover:bg-violet-600/40 hover:border-violet-500'
+                          : 'bg-white/5 border-white/10 text-white/60 hover:text-white hover:bg-white/10'
+                      }`}
+                    >
+                      Solicitar
+                    </a>
+                  </div>
+                </FadeUp>
+              ))}
+            </div>
+            
+            <FadeUp delay={0.6} duration={1}>
+              <div className="mt-8 text-right">
+                <a href="#contact" className="font-mono text-[10px] uppercase tracking-widest text-white/30 hover:text-white transition-colors border-b border-white/10 pb-1">
+                  Ver especificaciones técnicas →
+                </a>
+              </div>
+            </FadeUp>
+          </div>
+
         </div>
       </div>
     </section>
   );
-};
-
-export default Pricing;
+}
